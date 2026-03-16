@@ -131,3 +131,13 @@ if __name__ == "__main__":
 
     print("\n=== Polymorphic Processing Demo ===")
     print("Processing multiple data types through same interface...")
+
+        try:
+            dataa = [
+                d1 = NumericProcessor(),
+                d2 = TextProcessor(),
+                d3 = LogProcessor()
+            ]
+            i = 0
+            for d in dataa:
+                d1.process

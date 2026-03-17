@@ -2,8 +2,9 @@ from abc import ABC, abstractmethod
 from typing import Any, List, Dict, Union, Optional
 
 class DataStream(ABC):
-    def __init__(self, stream_id):
+    def __init__(self, stream_id: int, type:str, type:str):
         self.stream_id = stream_id
+        self.type = type
 
     @abstractmethod
     def process_batch(self, data_batch: List[Any]) -> str:
@@ -17,17 +18,17 @@ class DataStream(ABC):
 
 
 class SensorStream(DataStream):
-    def __init__(self, stream_id):
+    def __init__(self, stream_id: int, type:str):
         super().__init__(stream_id)
 
 
 class TransactionStream(DataStream):
-    def __init__(self, stream_id):
+    def __init__(self, stream_id: int, type:str):
         super().__init__(stream_id)
 
 
 class EventStream(DataStream):
-    def __init__(self, stream_id):
+    def __init__(self, stream_id: int, type:str):
         super().__init__(stream_id)
 
 

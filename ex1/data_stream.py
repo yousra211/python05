@@ -20,7 +20,13 @@ class DataStream(ABC):
 class SensorStream(DataStream):
     def __init__(self, stream_id: str, type:str):
         super().__init__(stream_id, type)
+        self.avg = 0
+
     def process_batch(self, data_batch: List[Any]) -> str:
+        count = 0
+        for el in data_batch:
+            count += 1
+            
         print("Initializing Sensor Stream...")
         print(f"Stream ID: {self.stream_id}, Type: {self.type}")
         formatted = [f"{k}:{v}" for d in data_batch for k, v in d.items()]
@@ -30,6 +36,8 @@ class SensorStream(DataStream):
 class TransactionStream(DataStream):
     def __init__(self, stream_id: str, type:str):
         super().__init__(stream_id, type)
+        self.net = 0
+
     def process_batch(self, data_batch: List[Any]) -> str:
         print("Initializing Transaction Stream...")
         print(f"Stream ID: {self.stream_id}, Type: {self.type}")
@@ -40,6 +48,8 @@ class TransactionStream(DataStream):
 class EventStream(DataStream):
     def __init__(self, stream_id: str, type:str):
         super().__init__(stream_id, type)
+        self.error = 0
+
     def process_batch(self, data_batch: List[Any]) -> str:
         print("Initializing Event Stream...")
         print(f"Stream ID: {self.stream_id}, Type: {self.type}")
